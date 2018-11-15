@@ -8,7 +8,7 @@ function sendMail(recipients, subject, mailTemplate, options, bccrecipients) {
   // Creating mail object
   const mail = new helper.Mail();
 
-  const fromEmail = new helper.Email('support@xwapp.com', 'Xwapp Support');
+  const fromEmail = new helper.Email('support@test.com', 'Test Support');
   mail.setFrom(fromEmail);
 
   mail.setSubject(subject);

@@ -2,16 +2,21 @@ const assert = require('assert');
 let Schema = null;
 
 function init() {
-    const folderSchema = new Schema({
-        // unique folder id
-        fid: {
+    const transactionSchema = new Schema({
+        type: {
             type: String,
+            required: true,
+        },
+        transaction_id: {
+            type: Number,
             required: true,
             unique: true
         },
-        // folder name
-        fname: {
-            type: String,
+        parent_id: {
+            type: Number,
+        },
+        amount: {
+            type: Number,
             required: true
         },
     }, {
@@ -20,8 +25,7 @@ function init() {
             updatedAt: 'updated_at'
         }
     });
-
-    return folderSchema;
+    return transactionSchema;
 }
 
 module.exports = (schema) => {

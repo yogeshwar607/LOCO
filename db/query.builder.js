@@ -270,12 +270,12 @@ QueryBuilder.prototype.formatPaginationResponse = function (filteredData, totalR
   };
 };
 
-QueryBuilder.prototype.paginateQuery = async function (pg) {
+QueryBuilder.prototype.paginateQuery =  function (pg) {
   this.mainQuery = this._mainQuery.join(' ');
   this.totalQuery = this._totalQuery.join(' ');
-  let totalRecords = await pg.query(this.totalQuery, this.totalValues);
-  let filteredRecords = await pg.query(this.mainQuery, this.mainValues);
-  totalRecords = totalRecords.rows;
+  // let totalRecords = await pg.query(this.totalQuery, this.totalValues);
+  // let filteredRecords = await pg.query(this.mainQuery, this.mainValues);
+  // totalRecords = totalRecords.rows;
   filteredRecords = filteredRecords.rows;
   return this.formatPaginationResponse(filteredRecords, totalRecords);
 };

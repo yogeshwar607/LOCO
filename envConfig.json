@@ -1,0 +1,17 @@
+{
+    "NODE_ENV": "development",
+    "PORT": 4700,
+    "LOGGER_LEVEL": "info",
+    "baseUrl":"http://127.0.0.1:4700/api/v1",
+    "MONGO":{
+        "host":"ds055374-a1.mongolab.com",
+        "database":"mnotes",
+        "port":"23822",
+        "user":"mnotesadmin",
+        "password":"qwerty123",
+        "url":"mongodb://mnotesadmin:qwerty123@ds123822.mlab.com:23822/mnotes"
+    },
+    "REDIS":{
+        
+    }
+}

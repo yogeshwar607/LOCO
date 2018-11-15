@@ -1,10 +1,5 @@
-const tagsJoiSchema = require('./tags.schema');
-const foldersJoiSchema = require('./folders.schema');
-const notesJoiSchema = require('./notes.schema');
-
+const transactionJoiSchema = require('./transaction.schema');
 
 module.exports = {
-  tagsJoiSchema,
-  notesJoiSchema,
-  foldersJoiSchema
+  transactionJoiSchema
 };
