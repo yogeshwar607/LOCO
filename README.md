@@ -29,4 +29,4 @@ For testing and verification
 
 Postman Collection - https://www.getpostman.com/collections/b840a6f8f5337ede1bbf
 
-![folder structure for reference] (https://raw.githubusercontent.com/yogeshwar607/remotepanda/master/Screen%20Shot%202018-11-15%20at%2011.57.42%20PM.png)
+![folder structure](https://raw.githubusercontent.com/yogeshwar607/remotepanda/master/screenshot.png)
