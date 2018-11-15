@@ -1,7 +1,7 @@
 
 ## Requirements
 
-* Node 8
+* Node 8 ++ 
 * Git
 
 ## Setup
@@ -29,4 +29,4 @@ For testing and verification
 
 Postman Collection - https://www.getpostman.com/collections/b840a6f8f5337ede1bbf
 
-![folder structure for reference] (https://github.com/yogeshwar607/remotepanda/blob/master/Screen%20Shot%202018-11-15%20at%2011.57.42%20PM.png)
+![folder structure for reference] (https://raw.githubusercontent.com/yogeshwar607/remotepanda/master/Screen%20Shot%202018-11-15%20at%2011.57.42%20PM.png)
