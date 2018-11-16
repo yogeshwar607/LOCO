@@ -29,4 +29,7 @@ For testing and verification
 
 Postman Collection - https://www.getpostman.com/collections/b840a6f8f5337ede1bbf
 
+
+Folder Structure for reference
+
 ![folder structure](https://raw.githubusercontent.com/yogeshwar607/remotepanda/master/screenshot.png)
