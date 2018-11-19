@@ -4,15 +4,18 @@ require('./envVars');
 // set globals
 require('./globals');
 
-const { mongoose, server } = require('./config');
-
- mongoose.init();
+const {server} = require('./config');
 
 // Start API Server
-require('./web/server');
+require('./web/server').app;
+
+// starting server and plugin gracefull shutdown module
+appServer = require('./web/server').appServer;
+require('./gracefullyShutDown')(appServer);
+
 logger.info(`Environment: ${server.env}`);
 
-// uncaughtException Exception notification sent to Slack channel
+// uncaughtException Exception notification
 process.on('uncaughtException', (err) => {
     logger.error((new Date).toUTCString() + ' uncaughtException:', err.message);
     logger.error(err.stack);

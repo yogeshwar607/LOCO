@@ -1,10 +1,17 @@
 // Starting an API Server to expose functinalities
-const { express, server } = rootRequire('config');
+const {
+  express,
+  server
+} = rootRequire('config');
 
 const app = express();
+const appServer = require('http').Server(app);
 
 // mounting middlewares
-const { basic, handleError } = require('./middleware');
+const {
+  basic,
+  handleError
+} = require('./middleware');
 
 basic(app);
 
@@ -20,4 +27,7 @@ app.listen(server.port, (err) => {
   logger.info(`Express Server Up and Running @PORT: ${server.port} | at localhost`);
 });
 
-module.exports = app;
+module.exports = {
+  app,
+  appServer
+};
