@@ -4,8 +4,8 @@ const Joi = require('joi');
 const _ = require('lodash');
 
 const {
-    transactionDAO
-} = rootRequire('commons').DAO;
+    transactionList
+} = rootRequire('models');
 
 async function logic({
     params,
@@ -13,15 +13,10 @@ async function logic({
 }) {
     try {
         const reqType = url.split('/')[2];
-        const baseQuery = {};
 
-        // if transactionId id is present
         if (reqType === "transaction") {
             const transactionId = params.transaction_id
-            baseQuery.transaction_id = transactionId;
-            const result = await new transactionDAO().find({
-                baseQuery
-            });
+            let result = transactionList().getTxnById(transactionId);
 
             if (result.length) {
                 const {
@@ -36,46 +31,30 @@ async function logic({
                     parent_id
                 };
             } else {
-                return {}
+                return Boom.badRequest({
+                    "status": "not ok"
+                })
             }
         }
         if (reqType === "types") {
-            baseQuery.type = params.type;
-            const result = await new transactionDAO().find({
-                baseQuery
-            });
-
+            let result = transactionList().getTxnByType(params.type);
             const txnIdArr = result.map((ele) => {
                 return ele.transaction_id
             });
             return txnIdArr;
-
         }
         if (reqType === "sum") {
-            baseQuery.transaction_id = params.transaction_id;
+            let transactionId = params.transaction_id;
 
-            // first find parent id of transaction
-            const {
-                parent_id
-            } = await new transactionDAO().findOne({
-                baseQuery
-            });
-
-            if (!parent_id) return {
-                sum: 0
-            }
-
-            const result = await new transactionDAO().find({
-                baseQuery: {
-                    parent_id
-                }
-            });
+            let result = transactionList().getSumByParentId(transactionId);
 
             const sum = result.reduce((sum, ele) => {
                 return sum + ele.amount;
             }, 0);
 
-            return {sum};
+            return {
+                sum
+            };
         }
 
     } catch (e) {

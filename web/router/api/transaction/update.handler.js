@@ -1,18 +1,13 @@
 const Boom = require('boom');
 const Joi = require('joi');
-const orzo = require('orzo');
-
-const {
-    getErrorMessages,
-} = rootRequire('commons').UTILS;
 
 const {
     transactionJoiSchema
 } = rootRequire('commons').SCHEMA;
 
 const {
-    transactionDAO
-} = rootRequire('commons').DAO;
+    transactionList
+} = rootRequire('models');
 
 async function logic({
     body,
@@ -33,8 +28,7 @@ async function logic({
 
         if (error) throw Boom.badRequest(getErrorMessages(error));
 
-        const _transactionDAO = new transactionDAO();
-        const result = await _transactionDAO.save(txnObj);
+        const result = transactionList().addTxn(txnObj);
         return result;
 
     } catch (e) {
