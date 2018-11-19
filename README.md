@@ -25,6 +25,20 @@ To start the express server, run the following
 npm start 
 ```
 
+Test cases are written for api testing at /test/apiTest.js using supertest and mocha
+Install supertest 
+```bash
+npm install supertest --save-dev
+```
+
+To test api, run the following
+```bash
+npm test 
+```
+
+
+
+
 For testing and verification
 
 Postman Collection - https://www.getpostman.com/collections/b840a6f8f5337ede1bbf
