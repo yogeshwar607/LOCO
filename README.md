@@ -47,7 +47,7 @@ Postman Collection - https://www.getpostman.com/collections/b840a6f8f5337ede1bbf
 
 ## Approach for apis 
 
-# Note:
+## Note:
 
 All the apis are validated using Joi schema (npm package).
 
@@ -79,7 +79,7 @@ transaction array = [{"type":"debit","amount":121,"parent_id":46564}];
     which is defined at /models/index
 
     It will find transaction detail based on transaction_id as input
-    Response is returned if valid transaction is found.
+    response is returned if valid transaction is found.
 
     types request type - transactionList().getTxnByType(type) is called 
     which is defined at /models/index
