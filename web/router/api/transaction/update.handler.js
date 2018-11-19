@@ -26,9 +26,10 @@ async function logic({
             error
         } = Joi.validate(txnObj, transactionJoiSchema.transactionSchema);
 
-        if (error) throw Boom.badRequest(getErrorMessages(error));
+        if (error) throw Boom.badRequest("Invalid input parameters");
 
         const result = transactionList().addTxn(txnObj);
+        if(result.status === "not ok") throw Boom.badRequest(result.msg);
         return result;
 
     } catch (e) {

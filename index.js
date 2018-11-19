@@ -7,10 +7,10 @@ require('./globals');
 const {server} = require('./config');
 
 // Start API Server
-require('./web/server').app;
+const app =require('./web/server').app;
 
 // starting server and plugin gracefull shutdown module
-appServer = require('./web/server').appServer;
+let appServer = require('./web/server').appServer;
 require('./gracefullyShutDown')(appServer);
 
 logger.info(`Environment: ${server.env}`);
@@ -21,3 +21,5 @@ process.on('uncaughtException', (err) => {
     logger.error(err.stack);
     process.exit(1);
 });
+
+module.exports = {app}

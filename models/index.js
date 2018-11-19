@@ -1,10 +1,16 @@
 const _ = require('lodash');
 
+// transaction list array containing all the transaction record
+// object format 
+// txnLinst = [{"type":"debit","amount":121,"parent_id":46564}];
+
 let txnList = [];
 
 let transactionList = function () {
     return {
         getTxnList: function () {
+
+            // returns all the transactions
             return txnList;
         },
         addTxn: function (txnObj) {
@@ -36,14 +42,14 @@ let transactionList = function () {
         },
         getTxnByType: (type) => {
 
-            // will return all transactions groupby type
+            // will return all transactions groupby transaction type
             let fileteredTxn = _.filter(txnList, _.matches({
                 "type": type
             }));
             return fileteredTxn;
         },
         getSumByParentId: (txnId) => {
-            
+
             // find parent_id from transaction_id provided in param
             let txn = _.find(txnList, (o) => {
                 return _.isMatch(o, {
