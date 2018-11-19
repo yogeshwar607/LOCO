@@ -1,7 +1,3 @@
-const mongoose = require('mongoose');
-
-const { redisClient } = rootRequire('config');
-
 // Gracefull shutdown, preventing data loss.
 // i.e. wait for existing connections and processes
 module.exports = function (appServer) {
@@ -16,7 +12,7 @@ module.exports = function (appServer) {
     } else {
       logger.info(`ProcessId: ${timestamp} Received kill signal, shutting down gracefully.`);
     }
-    redisClient.quit();
+
     // stop reciving connections.
     appServer.close(() => {
       logger.info(`Closed out remaining connections. ProcessId: ${timestamp}`);

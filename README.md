@@ -36,6 +36,8 @@ To test api, run the following
 npm test 
 ```
 
+Test case output
+![test cases](https://raw.githubusercontent.com/yogeshwar607/LOCO/master/testresult.png)
 
 
 
@@ -45,5 +47,50 @@ Postman Collection - https://www.getpostman.com/collections/b840a6f8f5337ede1bbf
 
 
 Folder Structure for reference
+
+
+Approach for apis 
+
+Note:
+All the apis are validated using Joi schema (npm package)
+Boom (npm package) is used for error handling
+For in-memory implementation , transaction array is defined in at /models/index.js
+in format  transaction array = [{"type":"debit","amount":121,"parent_id":46564}];
+
+1. /web/api/transaction/create
+
+    After basic sanitization check below function is called 
+    transactionList.addTxn(txnObj) defined at /models/index 
+    
+    This function will check whether transaction exits with same transaction id , 
+    if yes then throws error otherwise adds record to transaction list array
+
+2. /web/api/transaction/get
+
+   Based on request url , this is handling get requests
+   After checking url , 3 request types are defined in logic based on url inputs
+        
+        * transaction
+        * types
+        * sum
+
+    transaction request type - transactionList().getTxnById(transactionId) is called 
+    which is defined at /models/index
+
+        It will find transaction detail based on transaction_id as input
+    Response is returned if valid transaction is found.
+
+    types request type - transactionList().getTxnByType(type) is called 
+    which is defined at /models/index
+        It will filter and return transactions id in array with have same type - debit/credit
+
+    sum request type - transactionList().getSumByParentId(transactionId) is called 
+    which is defined at /models/index
+
+        It will find parent_id based on transaction_id as input.
+        After finding parent_id , it will return all the transaction linked to parent_id.
+
+    Sum of these filtered transaction is calculated using Array.reduce() and response is returned
+
 
 ![folder structure](https://raw.githubusercontent.com/yogeshwar607/remotepanda/master/screenshot.png)
