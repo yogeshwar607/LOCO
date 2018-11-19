@@ -41,22 +41,24 @@ Test case output
 
 
 
-For testing and verification
+# For testing and verification
 
 Postman Collection - https://www.getpostman.com/collections/b840a6f8f5337ede1bbf
 
 
-Folder Structure for reference
+##Approach for apis 
 
+#Note:
 
-Approach for apis 
+All the apis are validated using Joi schema (npm package).
 
-Note:
-All the apis are validated using Joi schema (npm package)
-Boom (npm package) is used for error handling
-For in-memory implementation , transaction array is defined in at /models/index.js
-in format  transaction array = [{"type":"debit","amount":121,"parent_id":46564}];
+Boom (npm package) is used for error handling.
 
+For in-memory implementation , transaction array is defined in at /models/index.js below format  
+
+```bash
+transaction array = [{"type":"debit","amount":121,"parent_id":46564}];
+```
 1. /web/api/transaction/create
 
     After basic sanitization check below function is called 
@@ -92,5 +94,3 @@ in format  transaction array = [{"type":"debit","amount":121,"parent_id":46564}]
 
     Sum of these filtered transaction is calculated using Array.reduce() and response is returned
 
-
-![folder structure](https://raw.githubusercontent.com/yogeshwar607/remotepanda/master/screenshot.png)
