@@ -36,19 +36,18 @@ To test api, run the following
 npm test 
 ```
 
-Test case output
 ![test cases](https://raw.githubusercontent.com/yogeshwar607/LOCO/master/testresult.png)
 
 
 
-# For testing and verification
+## For testing and verification
 
 Postman Collection - https://www.getpostman.com/collections/b840a6f8f5337ede1bbf
 
 
-##Approach for apis 
+## Approach for apis 
 
-#Note:
+# Note:
 
 All the apis are validated using Joi schema (npm package).
 
@@ -79,7 +78,7 @@ transaction array = [{"type":"debit","amount":121,"parent_id":46564}];
     transaction request type - transactionList().getTxnById(transactionId) is called 
     which is defined at /models/index
 
-        It will find transaction detail based on transaction_id as input
+    It will find transaction detail based on transaction_id as input
     Response is returned if valid transaction is found.
 
     types request type - transactionList().getTxnByType(type) is called 
@@ -89,8 +88,8 @@ transaction array = [{"type":"debit","amount":121,"parent_id":46564}];
     sum request type - transactionList().getSumByParentId(transactionId) is called 
     which is defined at /models/index
 
-        It will find parent_id based on transaction_id as input.
-        After finding parent_id , it will return all the transaction linked to parent_id.
+    It will find parent_id based on transaction_id as input.
+    After finding parent_id , it will return all the transaction linked to parent_id.
 
     Sum of these filtered transaction is calculated using Array.reduce() and response is returned
 
